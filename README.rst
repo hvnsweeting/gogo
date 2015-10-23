@@ -1,9 +1,12 @@
 gogo
 ====
 
-gogo - never get lost (again) in Go world.
+gogo - Go everywhere you want to go, never get lost in Go world (again).
 
-Because you always remember the package name, not his GitHub account.
+Why
+---
+
+Because we always remember the package name, not its author's GitHub account.
 
 Usage
 -----
@@ -32,3 +35,4 @@ TODO
 
 - support Py3
 - handle non-github repo (E.g yaml)
+- port to Golang
