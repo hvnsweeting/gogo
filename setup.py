@@ -5,7 +5,7 @@ from distutils.core import setup
 
 setup(
     name='gogo',
-    version='0.9.0',
+    version='1.0.0',
     description='Golang package navigator',
     author='Viet Hung Nguyen',
     author_email='hvn@familug.org',
