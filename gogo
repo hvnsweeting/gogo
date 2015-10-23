@@ -1,0 +1,47 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+import argparse
+import os
+
+
+def find_import_path(pkg, full=False, gopath=''):
+    # TODO: current implement not true for gopkg.in/fsnotify.v1
+    GOPATH = os.environ.get('GOPATH', '') if not gopath else gopath
+    if not GOPATH:
+        os.exit("GOPATH is not set")
+
+    src = os.path.join(GOPATH, 'src')
+    sites = [d for d in os.listdir(src)]
+    # print sites
+    for site in sites:
+        fullpath = os.path.join(src, site)
+        if os.path.isdir(fullpath):
+            for username in os.listdir(fullpath):
+                # print os.path.join(site, username)
+                repo_path = os.path.join(fullpath, username)
+                if os.path.isdir(repo_path):
+                    for repo in os.listdir(repo_path):
+                        import_path = os.path.join(repo_path, repo)
+                        if os.path.isdir(import_path):
+                            if pkg == repo:
+                                if full:
+                                    print import_path
+                                else:
+                                    print os.path.relpath(import_path, src)
+
+
+def main():
+    argp = argparse.ArgumentParser()
+    argp.add_argument('package')
+    argp.add_argument('-i', '--import-path', help='print out import path',
+                      action='store_true')
+    args = argp.parse_args()
+    if args.import_path:
+        find_import_path(args.package)
+    else:
+        find_import_path(args.package, True)
+
+
+if __name__ == "__main__":
+    main()
