@@ -34,5 +34,4 @@ TODO
 ----
 
 - support Py3
-- handle non-github repo (E.g yaml)
 - port to Golang
