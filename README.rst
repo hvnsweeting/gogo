@@ -39,7 +39,11 @@ correctly set.
 Installtion
 -----------
 
-Run setup.py file::
+Use pip::
+
+  pip install gogo
+
+Or run ``setup.py`` file::
 
   python setup.py install
 
