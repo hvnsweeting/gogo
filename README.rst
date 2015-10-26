@@ -14,9 +14,9 @@ Usage
 Print out full path of given go package::
 
   $ gogo yaml.v2
-  $HOME/src/gopkg.in/yaml.v2
+  /Users/hvn/golang/src/gopkg.in/yaml.v2
   $ gogo logrus
-  $HOME/src/github.com/Sirupsen/logrus
+  /Users/hvn/golang/src/github.com/Sirupsen/logrus
 
 Print out import path of given go package::
 
