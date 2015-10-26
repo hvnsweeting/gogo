@@ -6,10 +6,7 @@ import os
 
 
 def _get_path(path, src, full=False):
-    if full:
-        return path.replace(os.path.dirname(src), '$HOME')
-    else:
-        return os.path.relpath(path, src)
+    return path if full else os.path.relpath(path, src)
 
 
 def _get_dirs(directory):
