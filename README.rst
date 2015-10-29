@@ -18,12 +18,12 @@ Print out full path of given go package::
   $ gogo logrus
   /Users/hvn/golang/src/github.com/Sirupsen/logrus
 
-Print out import path of given go package::
+Print out quoted import path of given go package::
 
   $ gogo -i yaml.v2
-  gopkg.in/yaml.v2
+  "gopkg.in/yaml.v2"
   $ gogo -i logrus
-  github.com/Sirupsen/logrus
+  "github.com/Sirupsen/logrus"
 
 Find and cd to directory of a package::
 

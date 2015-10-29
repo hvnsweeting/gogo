@@ -6,7 +6,8 @@ import os
 
 
 def _get_path(path, src, full=False):
-    return path if full else os.path.relpath(path, src)
+    out = path if full else os.path.relpath(path, src)
+    return out if full else '"{0}"'.format(out)
 
 
 def _get_dirs(directory):
