@@ -17,6 +17,7 @@ def _get_dirs(directory):
         if os.path.isdir(p):
             yield p
 
+
 def find_import_path(src, pkg, full=False):
     for sitepath in _get_dirs(src):
         for path in _get_dirs(sitepath):
@@ -44,8 +45,17 @@ def main():
     if not GOPATH:
         os.exit("Environment variable GOPATH is not set, it is required.")
 
-    src = os.path.join(GOPATH, 'src')
-    print find_import_path(src, args.package, args.import_path)
+    gopaths = GOPATH.split(':')
+
+    for gopath in gopaths:
+        found = find_import_path(os.path.join(gopath, 'src'),
+                                 args.package, args.import_path)
+        if found:
+            print found
+            return
+        else:
+            continue
+        raise Exception('Go package not found')
 
 
 if __name__ == "__main__":
