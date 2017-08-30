@@ -1,5 +1,6 @@
 import argparse
 import os
+import sys
 
 
 def _get_path(path, src, full=False):
@@ -38,9 +39,12 @@ def main():
                       action='store_false')
     args = argp.parse_args()
 
-    GOPATH = os.environ.get('GOPATH', '')
+    GO_17_PLUS_DEFAULT = os.path.expanduser("~/go")
+    GOPATH = os.environ.get('GOPATH', GO_17_PLUS_DEFAULT)
+
     if not GOPATH:
-        os.exit("Environment variable GOPATH is not set, it is required.")
+        sys.exit("Environment variable GOPATH is not set, and default ~/go "
+                 " does not exist. It is required.")
 
     gopaths = GOPATH.split(':')
 
